@@ -184,7 +184,7 @@ def main():
          # Pycaret 
 	if st.checkbox("Utulisez Pycaret pour des traitement de fichiers"):
 		st.subheader("Traitement avec Pycaret")
-
+'''
 	        MYfile = st.file_uploader("Upload file", type=["csv"])
                 if MYfile is no None:
                        df = load_data(file)
@@ -192,7 +192,7 @@ def main():
                        st.write(df.head())
 				st.write("## Informations sur les colonnes:")
                        st.write(df.info())
-'''
+
               # Affichage des statistiques descriptives
                     st.write("## Statistiques descriptives:")
                     st.write(df.describe())
