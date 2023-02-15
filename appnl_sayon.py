@@ -3,7 +3,6 @@ import streamlit as st
 import os
 import re
 import openai 
-import spacy_streamlit
 
 # NLP Pkgs
 from textblob import TextBlob
