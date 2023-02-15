@@ -180,7 +180,7 @@ def main():
 		  
 			respons = generate_response(messag)
 			st.success(respons)   		
-	'''		
+		
          # Pycaret 
 	if st.checkbox("Utulisez Pycaret pour des traitement de fichiers"):
 		st.subheader("Traitement avec Pycaret")
@@ -203,7 +203,7 @@ def main():
 				st.write("## choix de target et features:")
                     st.write(targetc = select_features(df))
                     st.write(features = select_target(df)) 
-
+'''
 	st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
 	st.sidebar.text("BDC (Bases De Connaissances) Application.")
 	st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppressions des caractères sspéciaux et Resumé  du texte.!")
