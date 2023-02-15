@@ -105,8 +105,13 @@ def main():
 		message = st.text_area("Entrez le Texte à identifier","Tapez Ici...")
 		if st.button("Analyse"):
 			blob = TextBlob(message)
-			result_sentiment = blob.sentiment
-			st.success(result_sentiment)
+			result_sentiment = blob.sentiment.polarity
+                        if result_sentiment > 0:
+			   st.success("Positif")
+			elif result_sentiment < 0:
+			   st.error("Négatif")
+			else:
+                           st.warning("Neutre")
 
 	# Entity Extraction
 	if st.checkbox("Trouvez les  Entités de noms dans votre texte"):
