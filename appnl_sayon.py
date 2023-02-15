@@ -169,7 +169,18 @@ def main():
 		if st.button("Recherche"):
 		  
 			response = generate_response(message)
-			st.success(response)   		 
+			st.success(response)   
+			
+	# ChatBot 
+	if st.checkbox(" avec le tbot"):
+		st.subheader("Intéraction avec le bot")
+
+		messag = st.text_area("Entrez votre recherche ","Tapez Ici...")
+		if st.button("Rece"):
+		  
+			respons = generate_response(messag)
+			st.success(respons)   		
+	'''		
          # Pycaret 
 	if st.checkbox("Utulisez Pycaret pour des traitement de fichiers"):
 		st.subheader("Traitement avec Pycaret")
@@ -181,7 +192,7 @@ def main():
                        st.write(df.head())
 				st.write("## Informations sur les colonnes:")
                        st.write(df.info())
-
+'''
               # Affichage des statistiques descriptives
                     st.write("## Statistiques descriptives:")
                     st.write(df.describe())
