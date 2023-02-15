@@ -105,12 +105,12 @@ def main():
 		if st.button("Analyse"):
 			blob = TextBlob(message)
 			result_sentiment = blob.sentiment.polarity
-                          if result_sentiment > 0:
-			    st.success("Positif")
-			  elif result_sentiment < 0:
-			    st.error("Négatif")
-			  else:
-                            st.warning("Neutre")
+                        if result_sentiment > 0:
+			   st.success("Positif")
+			elif result_sentiment < 0:
+			   st.error("Négatif")
+			else:
+                           st.warning("Neutre")
 	# Entity Extraction
 	if st.checkbox("Trouvez les  Entités de noms dans votre texte"):
 		st.subheader("Identification des Entités dans votre texte")
