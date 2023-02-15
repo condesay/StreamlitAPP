@@ -176,11 +176,11 @@ def main():
 
 	        MYfile = st.file_uploader("Upload file", type=["csv"])
                 if MYfile is no None:
-                    df = load_data(file)
-                    st.write("## Les premières lignes du fichier:")
-                    st.write(df.head())
+                       df = load_data(file)
+                       st.write("## Les premières lignes du fichier:")
+                       st.write(df.head())
 				st.write("## Informations sur les colonnes:")
-                    st.write(df.info())
+                       st.write(df.info())
 
               # Affichage des statistiques descriptives
                     st.write("## Statistiques descriptives:")
