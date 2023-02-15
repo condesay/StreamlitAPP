@@ -174,24 +174,24 @@ def main():
 	if st.checkbox("Utulisez Pycaret pour des traitement de fichiers"):
 		st.subheader("Traitement avec Pycaret")
 
-	MYfile = st.file_uploader("Upload file", type=["csv"])
-        if MYfile is no None:
-                df = load_data(file)
-                st.write("## Les premières lignes du fichier:")
-                st.write(df.head())
+	        MYfile = st.file_uploader("Upload file", type=["csv"])
+                if MYfile is no None:
+                    df = load_data(file)
+                    st.write("## Les premières lignes du fichier:")
+                    st.write(df.head())
 				st.write("## Informations sur les colonnes:")
-                st.write(df.info())
+                    st.write(df.info())
 
               # Affichage des statistiques descriptives
-                st.write("## Statistiques descriptives:")
-                st.write(df.describe())
+                    st.write("## Statistiques descriptives:")
+                    st.write(df.describe())
 
              # Affichage des statistiques descriptives
-                st.write("## La taille de Data :")
-                st.write(df.shape)
+                    st.write("## La taille de Data :")
+                    st.write(df.shape)
 				st.write("## choix de target et features:")
-                st.write(targetc = select_features(df))
-                st.write(features = select_target(df)) 
+                    st.write(targetc = select_features(df))
+                    st.write(features = select_target(df)) 
 
 	st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
 	st.sidebar.text("BDC (Bases De Connaissances) Application.")
