@@ -2,7 +2,7 @@
 import streamlit as st
 import os
 import re
-
+import sumy
 # NLP Pkgs
 from textblob import TextBlob
 import spacy
@@ -11,7 +11,6 @@ import nltk
 nltk.download('punkt')
 
 # Sumy Summary Pkg
-!pip install sumy
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
