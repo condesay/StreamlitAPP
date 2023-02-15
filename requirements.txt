@@ -4,4 +4,4 @@ textblob==0.15.3
 spacy==3.2.1
 gensim==3.8.3
 openai
-pip3 install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
+-m spacy download en_core_web_sm
