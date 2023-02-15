@@ -4,4 +4,3 @@ textblob==0.15.3
 spacy==3.2.1
 gensim==3.8.3
 openai
-en_core_web_sm
