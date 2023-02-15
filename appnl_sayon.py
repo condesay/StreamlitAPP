@@ -2,6 +2,7 @@
 import streamlit as st
 import os
 import re
+import sumy
 # NLP Pkgs
 from textblob import TextBlob
 import spacy
