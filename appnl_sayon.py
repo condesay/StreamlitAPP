@@ -81,8 +81,8 @@ def main():
                 summary_result = sumy_summarizer(message)
             if summary_options == 'gensim':
                 st.text("Utilisant la méthode Gensim ..")
-               summary_result = summarize(message)
-               st.write(summary_result)
+                summary_result = summarize(message)
+                st.write(summary_result)
 
 # Entity Extraction
 if st.checkbox("Trouvez les entités de votre texte"):
