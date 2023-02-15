@@ -101,16 +101,17 @@ def main():
 	# Sentiment Analysis
 	if st.checkbox("Trouvez le Sentiment de votre  texte"):
 		st.subheader("Identification du Sentiment dans votre Texte")
+		
 		message = st.text_area("Entrez le Texte à identifier","Tapez Ici...")
 		if st.button("Analyse"):
-		    blob = TextBlob(message)
-		    result_sentiment = blob.sentiment.polarity
-                    if result_sentiment > 0:
-			st.success("Positif")
-		    elif result_sentiment < 0:
-			st.error("Négatif")
-		    else:
-                        st.warning("Neutre")
+		        blob = TextBlob(message)
+		        result_sentiment = blob.sentiment.polarity
+                        if result_sentiment > 0:
+			   st.success("Positif")
+		        elif result_sentiment < 0:
+			   st.error("Négatif")
+		        else:
+                           st.warning("Neutre")
 	# Entity Extraction
 	if st.checkbox("Trouvez les  Entités de noms dans votre texte"):
 		st.subheader("Identification des Entités dans votre texte")
