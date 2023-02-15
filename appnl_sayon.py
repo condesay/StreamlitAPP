@@ -1,5 +1,5 @@
 # Core Pkgs
-python -m spacy download en_core_web_sm
+python  spacy download en_core_web_sm
 import streamlit as st
 import os
 import re
