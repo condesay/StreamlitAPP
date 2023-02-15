@@ -2,4 +2,4 @@
 sumy==0.8.1
 textblob==0.15.3
 spacy==3.2.1
-gensim==4.1.2
+gensim==3.8.3
