@@ -175,7 +175,6 @@ def main():
 	if st.checkbox("Classification avec Pycaret"):
 		st.subheader("Classification avec Pycaret")
 
-		messages = st.text_area("Télécharger ici votre fichier ","Tapez Ici...")
 		if st.button("Pycaret"):
 		        file = st.file_uploader("Upload file", type=["csv"])
 				 
