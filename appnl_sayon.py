@@ -77,13 +77,29 @@ def load_data(file):
 #features
 def select_features(df):
     features = st.multiselect("Sélectionnez les features", df.columns.tolist())
-        
     return features
-#target
+
 def select_target(df):
-    target = st.selectbox("Sélectionnez la target", df.columns.tolist())
+    target = st.selectbox("Sélectionnez la target", df.columns.tolist(),key="unique_key")
     return target
 
+def preprocess_data(df):
+    df = df.sample(1000, random_state=786).reset_index(drop=True)
+    return df
+
+def setup_experiment(df):
+    exp_nlp101 = setup(data=df, target=target, session_id=123)
+    return exp_nlp101
+
+@st.cache(allow_output_mutation=True)
+def create_lda_model():
+    ldafr = create_model('lda')
+    return ldafr
+
+@st.cache(allow_output_mutation=True)
+def tune_lda_model():
+    tuned_classification = tune_model(model='lda', multi_core=True, supervised_target=target)
+    return tuned_classification
 def main():
 	""" NLP Application sur Streamlit """
 
@@ -177,10 +193,7 @@ def main():
 
 
        # Charger les données
-@st.cache(allow_output_mutation=True)
-def load_data(file):
-     data = pd.read_csv(file)
-     return data
+
 
 file = st.file_uploader("Upload file", type=["csv"])
 if file is not None:
@@ -203,39 +216,26 @@ if file is not None:
      st.write(df.shape)
 
         # Sélectionner les features et la target
-def select_features(df):
-     features = st.multiselect("Sélectionnez les features", df.columns.tolist())
-     return features
 
-def select_target(df):
-     target = st.selectbox("Sélectionnez la target", df.columns.tolist(),key="unique_key")
-     return target
 
 st.write("## Choix de la target et des features:")
 target = select_target(df)
 features = select_features(df)
 
         # Prétraiter les données
-def preprocess_data(df):
-     df = df.sample(1000, random_state=786).reset_index(drop=True)
-     return df
+
 df = preprocess_data(df)
 st.write("## Prétraitement:")
 st.write(df)
 
         # Configurer l'expérience PyCaret
-def setup_experiment(df):
-     exp_nlp101 = setup(data=df, target=target, session_id=123)
-     return exp_nlp101
+
 
 exp_nlp101 = setup_experiment(df)
 st.write("## Setup:")
 st.write(exp_nlp101)
         # Créer le modèle LDA
-@st.cache(allow_output_mutation=True)
-def create_lda_model():
-     ldafr = create_model('lda')
-     return ldafr
+
 ldafr = create_lda_model()
 st.write(ldafr)
         # Assigner les topics aux documents
@@ -247,11 +247,7 @@ eval=evaluate_model(ldafr)
 st.write(eval)
 
         # Ajuster le modèle
-@st.cache(allow_output_mutation=True)
-def tune_lda_model():
-     tuned_classification = tune_model(model='lda', multi_core=True, supervised_target=target)
-     return tuned_classification
-
+	
 tuned_classification = tune_lda_model()
 st.write(tuned_classification)
         # Visualiser les résultats
