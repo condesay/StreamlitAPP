@@ -176,31 +176,31 @@ def main():
 
 
 
-    # Charger les données
-    @st.cache(allow_output_mutation=True)
-    def load_data(file):
-        data = pd.read_csv(file)
-        return data
+       # Charger les données
+        @st.cache(allow_output_mutation=True)
+        def load_data(file):
+            data = pd.read_csv(file)
+            return data
 
-    file = st.file_uploader("Upload file", type=["csv"])
-    if file is not None:
-        df = load_data(file)
+        file = st.file_uploader("Upload file", type=["csv"])
+        if file is not None:
+            df = load_data(file)
 
         # Afficher les premières lignes du fichier
-        st.write("## Les premières lignes du fichier:")
-        st.write(df.head())
+            st.write("## Les premières lignes du fichier:")
+            st.write(df.head())
 
         # Afficher des informations sur les colonnes
-        st.write("## Informations sur les colonnes:")
-        st.write(df.info())
+            st.write("## Informations sur les colonnes:")
+            st.write(df.info())
 
         # Afficher les statistiques descriptives
-        st.write("## Statistiques descriptives:")
-        st.write(df.describe())
+            st.write("## Statistiques descriptives:")
+            st.write(df.describe())
 
         # Afficher la taille des données
-        st.write("## La taille des données:")
-        st.write(df.shape)
+            st.write("## La taille des données:")
+            st.write(df.shape)
 
         # Sélectionner les features et la target
         def select_features(df):
