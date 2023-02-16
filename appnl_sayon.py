@@ -3,10 +3,7 @@ import streamlit as st
 import os
 import re
 import openai 
-			
-import pandas as pd
-import matplotlib.pyplot as plt
-from pycaret.nlp import *
+
 # NLP Pkgs
 from textblob import TextBlob
 import spacy
@@ -72,34 +69,18 @@ def remove_special_characters(Description):
 
 #importation de fichier
 def load_data(file):
-    df = pd.read_csv(file)
-    return df
+    data = pd.read_csv(file)
+    return data
 #features
 def select_features(df):
     features = st.multiselect("Sélectionnez les features", df.columns.tolist())
+        
     return features
-
+#target
 def select_target(df):
-    target = st.selectbox("Sélectionnez la target", df.columns.tolist(),key="unique_key")
+    target = st.selectbox("Sélectionnez la target", df.columns.tolist())
     return target
 
-def preprocess_data(df):
-    df = df.sample(1000, random_state=786).reset_index(drop=True)
-    return df
-
-def setup_experiment(df):
-    exp_nlp101 = setup(data=df, target=target, session_id=123)
-    return exp_nlp101
-
-@st.cache(allow_output_mutation=True)
-def create_lda_model():
-    ldafr = create_model('lda')
-    return ldafr
-
-@st.cache(allow_output_mutation=True)
-def tune_lda_model():
-    tuned_classification = tune_model(model='lda', multi_core=True, supervised_target=target)
-    return tuned_classification
 def main():
 	""" NLP Application sur Streamlit """
 
@@ -188,81 +169,33 @@ def main():
 		if st.button("Recherche"):
 		  
 			response = generate_response(message)
-			st.success(response)   
+			st.success(response)   		 
+         # Pycaret 
+	if st.checkbox("Utulisez Pycaret pour des traitement de fichiers"):
+		st.subheader("Traitement avec Pycaret")
 
+	        MYfile = st.file_uploader("Upload file", type=["csv"])
+                if MYfile is no None:
+                    df = load_data(file)
+                    st.write("## Les premières lignes du fichier:")
+                    st.write(df.head())
+				st.write("## Informations sur les colonnes:")
+                    st.write(df.info())
 
+              # Affichage des statistiques descriptives
+                    st.write("## Statistiques descriptives:")
+                    st.write(df.describe())
 
-        # Charger les données
+             # Affichage des statistiques descriptives
+                    st.write("## La taille de Data :")
+                    st.write(df.shape)
+				st.write("## choix de target et features:")
+                    st.write(targetc = select_features(df))
+                    st.write(features = select_target(df)) 
 
-        if st.checkbox("les Chargez Das données"):
-		st.subheader("Télecharger")
-                file = st.file_uploader("Upload file", type=["csv"])
-		if st.button("Télecharger"):
-                if file is not None:
-
-
-                df = load_data(file)
-
-        # Afficher les premières lignes du fichier
-                st.write("## Les premières lignes du fichier:")
-                st.write(df.head())
-
-        # Afficher des informations sur les colonnes
-                st.write("## Informations sur les colonnes:")
-                st.write(df.info())
-
-        # Afficher les statistiques descriptives
-                st.write("## Statistiques descriptives:")
-                st.write(df.describe())
-
-        # Afficher la taille des données
-                st.write("## La taille des données:")
-                st.write(df.shape)
-
-        # Sélectionner les features et la target
-
-
-                st.write("## Choix de la target et des features:")
-
-                target = select_target(df)
-                st.write(target)
-
-                features = select_features(df)
-                st.write(features)
-
-        # Prétraiter les données
-
-                df = preprocess_data(df)
-                st.write("## Prétraitement:")
-                st.write(df)
-
-        # Configurer l'expérience PyCaret
-
-
-                exp_nlp101 = setup_experiment(df)
-                st.write("## Setup:")
-                st.write(exp_nlp101)
-        # Créer le modèle LDA
-
-                ldafr = create_lda_model()
-                st.write(ldafr)
-        # Assigner les topics aux documents
-                lda_results = assign_model(ldafr)
-                st.write(lda_results)
-
-        # Évaluer le modèle
-                eval=evaluate_model(ldafr)
-                st.write(eval)
-
-        # Ajuster le modèle
-	
-                tuned_classification = tune_lda_model()
-                st.write(tuned_classification)
-    
-
-st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
-st.sidebar.text("BDC (Bases De Connaissances) Application.")
-st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppressions des caractères sspéciaux et Resumé  du texte.!")
+	st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
+	st.sidebar.text("BDC (Bases De Connaissances) Application.")
+	st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppressions des caractères sspéciaux et Resumé  du texte.!")
 	
 
 if __name__ == '__main__':
