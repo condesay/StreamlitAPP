@@ -194,86 +194,71 @@ def main():
 
        # Charger les données
 
+        if st.checkbox(" les Chargez Das données"):
+		st.subheader("Télecharger")
+                file = st.file_uploader("Upload file", type=["csv"])
+		if st.button("Télecharger"):
+                if file is not None:
 
-file = st.file_uploader("Upload file", type=["csv"])
-if file is not None:
-     df = load_data(file)
+
+                df = load_data(file)
 
         # Afficher les premières lignes du fichier
-     st.write("## Les premières lignes du fichier:")
-     st.write(df.head())
+                st.write("## Les premières lignes du fichier:")
+                st.write(df.head())
 
         # Afficher des informations sur les colonnes
-     st.write("## Informations sur les colonnes:")
-     st.write(df.info())
+                st.write("## Informations sur les colonnes:")
+                st.write(df.info())
 
         # Afficher les statistiques descriptives
-     st.write("## Statistiques descriptives:")
-     st.write(df.describe())
+                st.write("## Statistiques descriptives:")
+                st.write(df.describe())
 
         # Afficher la taille des données
-     st.write("## La taille des données:")
-     st.write(df.shape)
+                st.write("## La taille des données:")
+                st.write(df.shape)
 
         # Sélectionner les features et la target
 
 
-st.write("## Choix de la target et des features:")
+                st.write("## Choix de la target et des features:")
 
-target = select_target(df)
-st.write(target)
+                target = select_target(df)
+                st.write(target)
 
-features = select_features(df)
-st.write(features)
+                features = select_features(df)
+                st.write(features)
 
         # Prétraiter les données
 
-df = preprocess_data(df)
-st.write("## Prétraitement:")
-st.write(df)
+                df = preprocess_data(df)
+                st.write("## Prétraitement:")
+                st.write(df)
 
         # Configurer l'expérience PyCaret
 
 
-exp_nlp101 = setup_experiment(df)
-st.write("## Setup:")
-st.write(exp_nlp101)
+                exp_nlp101 = setup_experiment(df)
+                st.write("## Setup:")
+                st.write(exp_nlp101)
         # Créer le modèle LDA
 
-ldafr = create_lda_model()
-st.write(ldafr)
+                ldafr = create_lda_model()
+                st.write(ldafr)
         # Assigner les topics aux documents
-lda_results = assign_model(ldafr)
-st.write(lda_results)
+                lda_results = assign_model(ldafr)
+                st.write(lda_results)
 
         # Évaluer le modèle
-eval=evaluate_model(ldafr)
-st.write(eval)
+                eval=evaluate_model(ldafr)
+                st.write(eval)
 
         # Ajuster le modèle
 	
-tuned_classification = tune_lda_model()
-st.write(tuned_classification)
-        # Visualiser les résultats
-st.title("Topic Modeling avec PyCaret et Streamlit")
-st.subheader("Word Cloud")
-stop_words = stopwords.words('french')
-
-tx1=""
-for info in df[target]:
-    tx1 = tx1 + str(info) + " "
-
-wc = WordCloud(
-    background_color='white',
-    max_words=2000,
-    stopwords=stop_words
- )
-
-wc.generate(str(tx1))
-
-plt.imshow(wc)
-plt.axis('off')
-st.pyplot()
+                tuned_classification = tune_lda_model()
+                st.write(tuned_classification)
+    
 
 st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
 st.sidebar.text("BDC (Bases De Connaissances) Application.")
