@@ -171,6 +171,16 @@ def main():
 			response = generate_response(message)
 			st.success(response)   		 
          
+	# ChatBot 
+	if st.checkbox("Classification avec Pycareet"):
+		st.subheader("Classification avec Pycaret")
+
+		messages = st.text_area("Télécharger ici votre fichier ","Tapez Ici...")
+		if st.button("Pycaret"):
+		  
+			responses = generate_response(messages)
+			st.success(responses)   		 
+         
 
               
 
