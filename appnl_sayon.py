@@ -177,14 +177,14 @@ def main():
 
 
        # Charger les données
-        @st.cache(allow_output_mutation=True)
-        def load_data(file):
-            data = pd.read_csv(file)
-            return data
+@st.cache(allow_output_mutation=True)
+def load_data(file):
+     data = pd.read_csv(file)
+     return data
 
-        file = st.file_uploader("Upload file", type=["csv"])
-        if file is not None:
-            df = load_data(file)
+file = st.file_uploader("Upload file", type=["csv"])
+if file is not None:
+     df = load_data(file)
 
         # Afficher les premières lignes du fichier
             st.write("## Les premières lignes du fichier:")
