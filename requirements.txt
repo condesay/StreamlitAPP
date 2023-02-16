@@ -4,4 +4,5 @@ textblob==0.15.3
 spacy==3.2.1
 gensim==3.8.3
 openai
+pycaret
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0-py3-none-any.whl
