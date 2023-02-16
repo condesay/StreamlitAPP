@@ -72,8 +72,8 @@ def remove_special_characters(Description):
 
 #importation de fichier
 def load_data(file):
-    data = pd.read_csv(file)
-    return data
+    df = pd.read_csv(file)
+    return df
 #features
 def select_features(df):
     features = st.multiselect("Sélectionnez les features", df.columns.tolist())
