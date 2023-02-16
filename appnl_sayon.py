@@ -219,8 +219,6 @@ if file is not None:
 
 
 st.write("## Choix de la target et des features:")
-target = st.selectbox("Sélectionnez la target", df.columns.tolist(),key="unique_key")
-features = st.multiselect("Sélectionnez les features", df.columns.tolist())
 
 target = select_target(df)
 st.write(target)
