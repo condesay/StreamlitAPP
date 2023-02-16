@@ -192,9 +192,9 @@ def main():
 
 
 
-       # Charger les données
+        # Charger les données
 
-        if st.checkbox(" les Chargez Das données"):
+        if st.checkbox("les Chargez Das données"):
 		st.subheader("Télecharger")
                 file = st.file_uploader("Upload file", type=["csv"])
 		if st.button("Télecharger"):
