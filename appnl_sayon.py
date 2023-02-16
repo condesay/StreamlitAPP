@@ -172,7 +172,7 @@ def main():
 			st.success(response)   		 
          
 	# ChatBot 
-	if st.checkbox("Classification avec Pycareet"):
+	if st.checkbox("Classification avec Pycaret"):
 		st.subheader("Classification avec Pycaret")
 
 		messages = st.text_area("Télécharger ici votre fichier ","Tapez Ici...")
