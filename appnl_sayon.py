@@ -177,9 +177,8 @@ def main():
 
 		messages = st.text_area("Télécharger ici votre fichier ","Tapez Ici...")
 		if st.button("Pycaret"):
-		  
-			responses = generate_response(messages)
-			st.success(responses)   		 
+		        file = st.file_uploader("Upload file", type=["csv"])
+				 
          
 
               
