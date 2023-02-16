@@ -219,9 +219,9 @@ features = select_features(df)
 def preprocess_data(df):
      df = df.sample(1000, random_state=786).reset_index(drop=True)
      return df
- df = preprocess_data(df)
- st.write("## Prétraitement:")
- st.write(df)
+df = preprocess_data(df)
+st.write("## Prétraitement:")
+st.write(df)
 
         # Configurer l'expérience PyCaret
 def setup_experiment(df):
