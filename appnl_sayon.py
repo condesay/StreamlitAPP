@@ -236,43 +236,44 @@ st.write(exp_nlp101)
 def create_lda_model():
      ldafr = create_model('lda')
      return ldafr
-
-        ldafr = create_lda_model()
-
+ldafr = create_lda_model()
+st.write(ldafr)
         # Assigner les topics aux documents
-        lda_results = assign_model(ldafr)
+lda_results = assign_model(ldafr)
+st.write(lda_results)
 
         # Évaluer le modèle
-        evaluate_model(ldafr)
+eval=evaluate_model(ldafr)
+st.write(eval)
 
         # Ajuster le modèle
-        @st.cache(allow_output_mutation=True)
-        def tune_lda_model():
-            tuned_classification = tune_model(model='lda', multi_core=True, supervised_target=target)
-            return tuned_classification
+@st.cache(allow_output_mutation=True)
+def tune_lda_model():
+     tuned_classification = tune_model(model='lda', multi_core=True, supervised_target=target)
+     return tuned_classification
 
-        tuned_classification = tune_lda_model()
-
+tuned_classification = tune_lda_model()
+st.write(tuned_classification)
         # Visualiser les résultats
-        st.title("Topic Modeling avec PyCaret et Streamlit")
-        st.subheader("Word Cloud")
-        stop_words = stopwords.words('french')
+st.title("Topic Modeling avec PyCaret et Streamlit")
+st.subheader("Word Cloud")
+stop_words = stopwords.words('french')
 
-        tx1=""
-        for info in df[target]:
-            tx1 = tx1 + str(info) + " "
+tx1=""
+for info in df[target]:
+    tx1 = tx1 + str(info) + " "
 
-        wc = WordCloud(
-            background_color='white',
-            max_words=2000,
-            stopwords=stop_words
-        )
+wc = WordCloud(
+    background_color='white',
+    max_words=2000,
+    stopwords=stop_words
+ )
 
-        wc.generate(str(tx1))
+wc.generate(str(tx1))
 
-        plt.imshow(wc)
-        plt.axis('off')
-        st.pyplot()
+plt.imshow(wc)
+plt.axis('off')
+st.pyplot()
 
 	      
 	st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
