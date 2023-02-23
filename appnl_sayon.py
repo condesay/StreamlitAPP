@@ -82,7 +82,7 @@ def select_target(df):
     return target
 
 def main():
-	""" NLP Application sur Streamlit """
+	""" Application de Bases de Connaissances (ABC) utilisant du NLP avec Streamlit """
 
 	# Title
 	st.title(" NLP Application")
@@ -186,7 +186,7 @@ def main():
 			
 
 	st.sidebar.subheader("Information sur l'application de Bases de connaissances")
-	st.sidebar.text("BDC (Bases De Connaissances) Application.")
+	st.sidebar.text("Application de Bases de Connaissances (ABC)")
 	st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppression des caractères sspéciaux et Resumé  du texte.!")
 	
 
