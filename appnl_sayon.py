@@ -85,8 +85,8 @@ def main():
 	""" Application de Bases de Connaissances (ABC) utilisant du NLP avec Streamlit """
 
 	# Title
-	st.title(" NLP Application")
-	st.subheader("Natural Language Processing Application")
+	st.title(" Application de Bases de Connaissances (ABC)")
+	st.subheader("Application de Bases de Connaissances (ABC) utilisant du NLP avec Streamlit")
 	st.markdown("""
     	#### Description
     	+ C'est une application de Natural Language Processing(NLP) Basée sur du traitement automatique du language Naturel, entre autres nous avons: 
