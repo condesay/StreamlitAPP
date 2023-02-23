@@ -185,9 +185,9 @@ def main():
             
 			
 
-	st.sidebar.subheader("Information sur  de l'Application de Bases de connaissances")
+	st.sidebar.subheader("Information sur l'application de Bases de connaissances")
 	st.sidebar.text("BDC (Bases De Connaissances) Application.")
-	st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppressions des caractères sspéciaux et Resumé  du texte.!")
+	st.sidebar.info("Cette Application permet de trouver le sentiment score, les tokens et les lemmas dans une phrase ou texte, les entités de noms, suppression des caractères sspéciaux et Resumé  du texte.!")
 	
 
 if __name__ == '__main__':
